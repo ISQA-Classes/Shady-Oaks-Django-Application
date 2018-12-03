@@ -106,7 +106,7 @@ def event_list(request):
 
 
 def scheduling(request):
-    teetime = Teetime.objects.filter(user=1)
+    teetime = Teetime.objects.filter(user=1, Teetime_Start__gte=timezone.now()).order_by('Teetime_Start')
     return render(request, 'main/scheduling.html', {'teetimes': teetime})
 
 
