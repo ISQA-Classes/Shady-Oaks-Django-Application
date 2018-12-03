@@ -53,6 +53,12 @@
         </div>
     </div>
     <div class="row">
+        <div class="row">
+        {% if user.is_superuser %}
+        <div class="row" style="float: right;margin-right: 60px">
+         <a href="/admin/main/event/add/" class="row"><span
+                    class="btn btn-primary">Add Event</span></a></div>
+        {% endif %}
         <h2 style="margin-left: 150px">Upcoming Event Information</h2>
         <p style="margin-left: 150px; margin-right: 150px">This is the Events Page! Listed below is a list of our upcoming events to be held
             at Shady Oaks Golf Course! To signup, or register, for these events, please call the number provided below for
