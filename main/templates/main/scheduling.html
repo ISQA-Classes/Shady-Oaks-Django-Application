@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+{% load staticfiles %}
+<html>
+<title>Shady Oaks Golf Course - Scheduling Page</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3pro.css">
+<link rel="stylesheet" href="css1.css">
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.3.0/css/font-awesome.min.css">
+<body>
+
+<nav class="w3-sidebar w3-bar-block w3-card w3-animate-left w3-center" style="display:none;background-color:#ff8000;" id="mySidebar">
+  <a href="{% url 'home' %}" class="w3-bar-item w3-button">Home</a>
+  <a href="{% url 'membership' %}" class="w3-bar-item w3-button">Membership</a>
+  <a href="{% url 'scheduling' %}" class="w3-bar-item w3-button">Scheduling</a>
+  <a href="{% url 'events' %}" class="w3-bar-item w3-button">Events</a>
+    <a href="{% url 'contact' %}" class="w3-bar-item w3-button">Contact Us</a>
+    <button class="w3-bar-item w3-button" onclick="w3_close()">Close <i class="fa fa-remove"></i></button>
+  <br>
+    <br>
+    <image src="{% static "images/ShadyOaksLogo.jpg" %}" alt="Logo" style="width:50%;align="right"/>
+</nav>
+
+  <header class="w3-container w3-theme w3-padding-32" id="myHeader">
+  <span>
+          <i onclick="w3_open()" class="fa fa-bars w3-xlarge w3-button w3-theme" style="color:white;"></i>
+          {% if user.is_authenticated %}
+          <p style="float:right;color: #ffffff;"><a href="{% url 'logout' %}"><span class="fa fa-btn fa-sign-out"></span>LOGOUT</a></p>
+          {% else %}
+          <p style="float:right;color: #ffffff;"><a href="{% url 'login' %}"><span class="glyphicon glyphicon-log-in"></span>LOGIN</a></p>
+          {% endif %}
+      <a style="float: right;color: white;margin-right: 20px;margin-top: 15px" href="{% url 'register' %}">REGISTER</a>
+      </span>
+  <div class="w3-center">
+  <h4 style="color:white;">Shady Oaks Golf Course</h4>
+  <h1 class="w3-xxxlarge w3-animate-bottom" style="color:white;">SCHEDULING</h1>
+  </div>
+      <style>
+          header {background-color: #072c16}
+</style>
+  </header>
+    <div style="padding-left: 150px; padding-right: 30px; padding-bottom: 100px; padding-top: 20px">
+        <table class="table table-striped table-bordered table-hover" style="text-align: center; border: 1px solid black; padding-left: 15px
+            padding-right: 15px;">
+            <thead>
+            <tr class="bg-info" >
+                <th style="border: 1px solid black; padding: 10px; background-color: #4CAF50; font-weight: bold">Type of Booking</th>
+                <th style="border: 1px solid black; padding: 10px; background-color: #4CAF50; font-weight: bold">Start Time</th>
+                <th style="border: 1px solid black; padding: 10px; background-color: #4CAF50; font-weight: bold">Golf Carts Available</th>
+                <th style="border: 1px solid black; padding: 10px; background-color: #4CAF50; font-weight: bold">Golfers Allowed</th>
+                <th style="border: 1px solid black; padding: 10px; background-color: #4CAF50; font-weight: bold">Booking</th>
+
+            </tr>
+            </thead>
+            {% if user.is_authenticated %}
+            <tbody>
+            {% for teetime in teetimes %}
+                <tr ></tr>
+                    <td style="border: 1px solid black; padding: 10px">{{ teetime.Teetime_Name }}</td>
+                    <td style="border: 1px solid black; padding: 10px">{{ teetime.Teetime_Start }}</td>
+                    <td style="border: 1px solid black; padding: 10px">{{ teetime.Golf_Carts }}</td>
+                    <td style="border: 1px solid black; padding: 10px">{{ teetime.Golfers_Allowed }}</td>
+                    <td><a href="{% url 'book_teetime' pk=teetime.pk %}" class="btn btn-warning">Book It!</a>
+
+                </tr>
+            {% endfor %}
+            </tbody>
+            {% else %}
+            <div style="text-align: center; padding-bottom: 20px;">Please login to view available Tee Times for your next visit.</div>
+            {% endif %}
+        </table>
+
+    </div>
+<!--Footer-->
+<footer style="background-color: #072c16">
+    <br>
+
+    <p id="socialmedia" style="color: white;margin-center: 20px">Follow us on our social media platforms:
+        <a href="https://twitter.com/?lang=en" target="_blank"><image src="{% static "images/Twitter.png" %}" alt="Twitter" style="width:2%"/></a>
+        <a href="https://www.instagram.com/" target="_blank"><image src="{% static "images/Instagram.png" %}" alt="instagram" style="width:2%"/></a>
+        <a href="https://www.facebook.com/" target="_blank"><image src="{% static "images/facebook.png" %}" alt="facebook" style="width:2%"/></a></p>
+    <p style="color: white;text-align:center">Copyright &copy 2018. All Rights Reserved. </p>
+     <br>
+</footer>
+<!--End of Footer-->
+<script>
+    // Side navigation
+function w3_open() {
+   var x = document.getElementById("mySidebar");
+    x.style.width = "20%";
+    x.style.fontSize = "20px";
+    x.style.paddingTop = "10%";
+    x.style.display = "block";
+}
+function w3_close() {
+    document.getElementById("mySidebar").style.display = "none";
+}
+</script>
+
+</body>
+</html>

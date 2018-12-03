@@ -1,0 +1,11 @@
+{% autoescape off %}
+For the email address you entered, the registered username is listed below.
+
+Your username is: {{ user.get_username }}
+
+Use the link below to login to your account:
+{{ protocol }}://{{ domain }}/login
+
+Sincerely,
+The Shady Oaks Golf Course Support Team
+{% endautoescape %}
