@@ -65,7 +65,7 @@ class Teetime(models.Model):
     Teetime_Name = models.CharField(default="Tee Time", max_length=50)
     Teetime_Start = models.DateTimeField(default=timezone.now)
     Golf_Carts = models.IntegerField(default=0)
-    Golfers_Allowed = models.IntegerField(default=1)
+    Golfers_Attending = models.IntegerField(default=1)
     Created_Date = models.DateTimeField(default=timezone.now)
     Updated_Date = models.DateTimeField(default=timezone.now)
 

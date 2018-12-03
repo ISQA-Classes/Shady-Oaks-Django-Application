@@ -15,7 +15,7 @@ admin.site.register(Event)
 
 
 class TeeTimeList(admin.ModelAdmin):
-    list_display = ('Teetime_Name', 'Teetime_Start', 'Golfers_Allowed')
+    list_display = ('Teetime_Name', 'Teetime_Start', 'Golfers_Attending')
     list_filter = 'Teetime_start'
     search_fields = 'Teetime_Start'
     ordering = ['Teetime_Start']

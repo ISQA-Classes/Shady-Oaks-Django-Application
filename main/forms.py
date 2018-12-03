@@ -61,6 +61,6 @@ class TeetimeForm(forms.ModelForm):
         fields = (
             'Teetime_Name',
             'Golf_Carts',
-            'Golfers_Allowed',
+            'Golfers_Attending',
         )
 
