@@ -58,10 +58,8 @@ class EditProfileForm(UserChangeForm):
 class TeetimeForm(forms.ModelForm):
     class Meta:
         model = Teetime
-        #TeetimeForm.fields['Teetime_Name'].widget.attrs['readonly'] = True
         fields = (
             'Teetime_Name',
-            'Teetime_Start',
             'Golf_Carts',
             'Golfers_Allowed',
         )
