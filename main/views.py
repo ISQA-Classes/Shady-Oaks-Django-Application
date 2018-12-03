@@ -119,8 +119,8 @@ def book_teetime(request, pk):
             teetime.user = request.user
             teetime.updated_date = timezone.now()
             teetime.save()
-            teetime = Teetime.objects.filter(Created_Date__lte=timezone.now())
-            return render(request, 'main/scheduling.html', {'teetimes': teetime})
+            teetime = Teetime.objects.filter(user=request.user)
+            return render(request, 'registration/profile.html', {'teetimes': teetime})
     else:
         form = TeetimeForm(instance=teetime)
         return render(request, 'registration/book_teetime.html', {'form': form})
